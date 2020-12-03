@@ -5,6 +5,10 @@
     "target": "es2017",
     "skipLibCheck": true,
     "noImplicitAny": true,
+    "types": [
+      "reflect-metadata",
+      "mocha"
+    ],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "suppressImplicitAnyIndexErrors": true,

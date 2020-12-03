@@ -1,14 +1,13 @@
 import 'reflect-metadata'; // to enable Decorator Metadata
-import { VideoResolver } from './resolvers/VideoResolver';
 import * as express from 'express';
 import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server-express';
+import { VideoResolver } from './videos/resolvers/VideoResolver';
 
 const startServer = async () => {
   // await createConnection();
-
   const schema = await buildSchema({
-    resolvers: [VideoResolver]
+    resolvers: [__dirname + '/**/resolvers/*.js']
   });
 
   const server = new ApolloServer({
@@ -19,7 +18,7 @@ const startServer = async () => {
   server.applyMiddleware({ app });
 
   app.listen({ port: 4000 }, () =>
-    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+    console.info(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
   );
 };
 
