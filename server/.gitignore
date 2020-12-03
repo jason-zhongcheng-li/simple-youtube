@@ -1,1 +1,5 @@
+# excluding all dependencies
 node_modules
+
+# excluding compiled files
+dist
