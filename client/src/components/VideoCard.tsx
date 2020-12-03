@@ -18,15 +18,14 @@ const useStyles = makeStyles({
   },
 });
 
-const VideoCard = () => {
+const VideoCard: React.FunctionComponent = () => {
   const classes = useStyles();
-
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image="https://youtu.be/il9SZU_nsVc"
           title="Contemplative Reptile"
         />
         <CardContent>

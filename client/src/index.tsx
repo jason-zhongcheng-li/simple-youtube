@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/css/index.css';
-import App from './App';
+import './assets/css/App.css';
 import reportWebVitals from './reportWebVitals';
+import ShootstaApolloProvider from './apollo/ShootstaApolloProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ShootstaApolloProvider />
   </React.StrictMode>,
   document.getElementById('root')
 );
