@@ -1,6 +1,6 @@
 import React from "react"
 import { ApolloProvider } from "react-apollo";
-import MenuBar from "../components/MenuBar";
+import Header from "../components/Header";
 import Routes from "../routes/Routes";
 import ShootstaApolloClient from "./ShootstaApolloClient";
 
@@ -8,12 +8,10 @@ import ShootstaApolloClient from "./ShootstaApolloClient";
 const ShootstaApolloProvider: React.FunctionComponent = () => {
   return (
     <div className="App">
-      <MenuBar />
-      <header className="App-header">
-        <ApolloProvider client={ShootstaApolloClient} >
-          <Routes />
-        </ApolloProvider >
-      </header>
+      {/* <Header /> */}
+      <ApolloProvider client={ShootstaApolloClient} >
+        <Routes />
+      </ApolloProvider >
     </div>
   )
 }
