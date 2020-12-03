@@ -11,23 +11,23 @@ export class VideoResolver {
   }
 
   @Query(() => String)
-  helloYoutube() {
+  public helloYoutube() {
     return 'Hellow Youtube!';
   }
 
   @Query(() => [Video])
-  async videos(): Promise<Video[]> {
+  public async videos(): Promise<Video[]> {
     return await this.service.getAllVideos();
   }
 
   @Query(() => Video)
-  async video(@Arg("id") id: String): Promise<Video | undefined> {
+  public async video(@Arg('id') id: String): Promise<Video | undefined> {
     return await this.service.getVideoById(id.toString());
   }
 
   @Mutation(() => Boolean)
-  async updateUser(
-    @Arg("path") path: String
+  public async updateUser(
+    @Arg('path') path: String
   ): Promise<Boolean> {
 
     console.log('user in resolver = ', path);

@@ -6,7 +6,7 @@ const videos = [
 
 export class VideoService {
 
-  async getAllVideos(): Promise<Video[]> {
+  public async getAllVideos(): Promise<Video[]> {
     setTimeout(() => {
       console.log('simulate db transaction');
     }, 10000);
@@ -19,7 +19,7 @@ export class VideoService {
     return videos;
   }
 
-  async getVideoById(id: string): Promise<Video> {
+  public async getVideoById(id: string): Promise<Video> {
     setTimeout(() => {
       console.log('simulate db transaction');
     }, 10000);
@@ -28,7 +28,7 @@ export class VideoService {
     return video;
   }
 
-  async saveVideo(path: string): Promise<Boolean> {
+  public async saveVideo(path: string): Promise<Boolean> {
     setTimeout(() => {
       console.log('simulate db transaction');
     }, 10000);

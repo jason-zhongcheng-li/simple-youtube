@@ -1,14 +1,14 @@
-import { Field, ID, ObjectType } from "type-graphql";
+import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class Video {
 
   @Field(() => ID)
-  id: number;
+  public id: number;
 
   @Field(() => String)
-  name: string;
+  public name: string;
 
   @Field(() => Number)
-  duration: number;
+  public duration: number;
 }

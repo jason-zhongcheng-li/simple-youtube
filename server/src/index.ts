@@ -1,7 +1,7 @@
-import "reflect-metadata"; // to enable Decorator Metadata
+import 'reflect-metadata'; // to enable Decorator Metadata
 import { VideoResolver } from './resolvers/VideoResolver';
 import * as express from 'express';
-import { buildSchema } from "type-graphql";
+import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server-express';
 
 const startServer = async () => {
@@ -21,6 +21,6 @@ const startServer = async () => {
   app.listen({ port: 4000 }, () =>
     console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
   );
-}
+};
 
 startServer();
