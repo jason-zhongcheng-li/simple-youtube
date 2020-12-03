@@ -1,3 +1,4 @@
+import { videos } from './../../../test/fixtures/videos';
 import { injectable } from 'inversify';
 import { VideoApi } from './../apis/VideoApi';
 import { Video } from './../models/Video';
@@ -9,23 +10,23 @@ export class VideoService {
   }
 
   public async getAllVideos(): Promise<Video[]> {
-    setTimeout(() => {
-      console.info('simulate db transaction');
+    let videos: Video[];
+    setTimeout(async () => {
+      videos = await this.videoApi.getVideos();
     }, 10000);
-    const videos = await this.videoApi.getVideos();
     /*
-      ...
-      business logic
-      ...
-    */
+        ...
+        business logic
+        ...
+      */
     return videos;
   }
 
   public async getVideoById(id: string): Promise<Video> {
-    setTimeout(() => {
-      console.info('simulate db transaction');
+    let video: Video;
+    setTimeout(async () => {
+      video = await this.videoApi.getVideoById(id);
     }, 10000);
-    const video = await this.videoApi.getVideoById(id);
     /*
      ...
      business logic
