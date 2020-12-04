@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../components/Header";
 import VideoCards from "../components/VideoCards";
+import VideoUpload from "../containers/video-upload";
 
 
 
@@ -12,6 +13,7 @@ const Routes: React.FunctionComponent = () => {
       <header className="App-header">
         <Switch>
           <Route exact path="/" component={VideoCards} />
+          <Route exact path="/upload" component={VideoUpload} />
         </Switch>
       </header>
     </BrowserRouter>

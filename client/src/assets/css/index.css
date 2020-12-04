@@ -56,9 +56,16 @@ code {
   padding: 20px;
   width: 60%;
   margin: 0 auto;
+  text-align: left;
+  font-size: initial;
 }
 
-.container-form input[type=text], select {
+.container-form label {
+  color: #111;
+
+}
+
+.container-form input[type=text], input[type=file] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -68,7 +75,11 @@ code {
   box-sizing: border-box;
 }
 
-.container-form input[type=submit] {
+.container-form input[type=file] {
+  color: #111;
+}
+
+.container-form button {
   width: 100%;
   background-color: #4CAF50;
   color: white;

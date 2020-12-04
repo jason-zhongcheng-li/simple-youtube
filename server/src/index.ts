@@ -1,9 +1,10 @@
 import 'reflect-metadata'; // to enable Decorator Metadata
 import * as express from 'express';
+import * as cors from 'cors';
 import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server-express';
-import { VideoResolver } from './videos/resolvers/VideoResolver';
 
+const app = express();
 const startServer = async () => {
   // await createConnection();
   const schema = await buildSchema({
@@ -14,7 +15,10 @@ const startServer = async () => {
     schema
   });
 
-  const app = express();
+
+
+  app.use(cors());
+
   server.applyMiddleware({ app });
 
   app.listen({ port: 4000 }, () =>
@@ -23,3 +27,5 @@ const startServer = async () => {
 };
 
 startServer();
+
+export default app;
