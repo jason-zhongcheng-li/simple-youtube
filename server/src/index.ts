@@ -4,20 +4,28 @@ import * as cors from 'cors';
 import { buildSchema } from 'type-graphql';
 import { ApolloServer } from 'apollo-server-express';
 
-const app = express();
+
 const startServer = async () => {
   // await createConnection();
   const schema = await buildSchema({
-    resolvers: [__dirname + '/**/resolvers/*.js']
+    resolvers: [__dirname + '/**/resolvers/*.js'],
+    validate: false
   });
 
   const server = new ApolloServer({
-    schema
+    schema,
+    context: ({ req, res }: any) => ({
+      req,
+      res
+    })
   });
 
 
-
-  app.use(cors());
+  const app = express();
+  app.use(cors({
+    credentials: false,
+    origin: 'http://localhost:3000'
+  }));
 
   server.applyMiddleware({ app });
 
@@ -28,4 +36,4 @@ const startServer = async () => {
 
 startServer();
 
-export default app;
+// export default app;

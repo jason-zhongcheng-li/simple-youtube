@@ -11,4 +11,5 @@ export class Video {
 
   @Field(() => Number)
   public duration: number;
+
 }

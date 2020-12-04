@@ -1,4 +1,5 @@
-import { inject } from 'inversify';
+import { GraphQLUpload, FileUpload } from 'graphql-upload';
+import { createWriteStream } from 'fs';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 import { Video } from '../models/Video';
 import { VideoService } from './../services/VideoService';
@@ -37,14 +38,20 @@ export class VideoResolver {
     return video;
   }
 
-  // @Mutation(() => Boolean)
-  // public async updateUser(
-  //   @Arg('path') path: String
-  // ): Promise<Boolean> {
+  @Mutation(() => Boolean)
+  public async uploadVideo(@Arg('path', () => GraphQLUpload) {
+    createReadStream,
+    filename
+  }: FileUpload): Promise<boolean> {
 
-  //   console.log('user in resolver = ', path);
-  //   const result = await this.service.saveVideo(path.toString());
-  //   console.log('result in resolver = ', result);
-  //   return true;
-  // }
+    const dirArr = __dirname.split('/');
+    const dest = dirArr.slice(0, dirArr.length - 3).join('/').concat('/assets/');
+
+    return new Promise(async (resolve, reject) =>
+      createReadStream()
+        .pipe(createWriteStream(dest + `${filename}`))
+        .on('finish', () => resolve(true))
+        .on('error', () => reject(false))
+    );
+  }
 }
