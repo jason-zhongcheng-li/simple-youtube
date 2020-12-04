@@ -68,7 +68,7 @@ const VideoUpload = () => {
           <div className="form-group">
             <ToastContainer />
           </div>
-          <button type="button" onClick={onClickHandler}>Upload</button>
+          <button type="button" name="upload-file" onClick={onClickHandler}>Upload</button>
         </div>
       </div>
     </div>
