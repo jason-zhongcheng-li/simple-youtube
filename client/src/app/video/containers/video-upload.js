@@ -21,7 +21,6 @@ const VideoUpload = () => {
   const [uploadFile, { loading, data, error }] = useMutation(uploadFileMutation, {
     onCompleted(data) {
       if (data.uploadFile.success) {
-        console.log('data = ', data);
         toast.success(data.uploadFile.message);
       } else {
         toast.error(data.uploadFile.message);
@@ -39,8 +38,6 @@ const VideoUpload = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   if (loading) return <Loading />;
-
-  console.log('loading = ', loading);
 
   return (
 

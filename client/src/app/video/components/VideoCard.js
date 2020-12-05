@@ -18,7 +18,10 @@ const useStyles = makeStyles({
   },
 });
 
-const VideoCard = () => {
+const VideoCard = props => {
+
+  const { video } = props;
+
   const classes = useStyles();
   return (
     <Card className={classes.root} >

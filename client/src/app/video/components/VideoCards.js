@@ -4,21 +4,14 @@ import VideoCard from "./VideoCard";
 // import MenuIcon from "@material-ui/icons/Menu";
 
 
-const VideoCards = () => {
+const VideoCards = props => {
+  const { videos } = props;
   return (
     // <Fragment>
     //   <Loading />
     // </Fragment>
     <div className="album">
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
+      {videos && videos.map(video => <VideoCard key={video.id} video={video} />)}
     </div>
   );
 }

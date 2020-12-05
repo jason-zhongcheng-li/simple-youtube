@@ -1,7 +1,6 @@
-import { videos } from './../../../test/fixtures/videos';
-import { injectable } from 'inversify';
 import { VideoApi } from './../apis/VideoApi';
 import { Video } from './../models/Video';
+import { videoStorage } from './../../index';
 
 export class VideoService {
   constructor(private videoApi: VideoApi) {
@@ -10,7 +9,6 @@ export class VideoService {
 
   public async getAllVideos(): Promise<Video[]> {
     const videos = await this.videoApi.getVideos();
-
     /*
         ...
         business logic

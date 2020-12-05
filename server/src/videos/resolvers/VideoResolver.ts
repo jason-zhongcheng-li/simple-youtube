@@ -1,5 +1,4 @@
 import { videoStorage } from './../../index';
-import 'reflect-metadata';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 import { createWriteStream } from 'fs';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
@@ -7,7 +6,6 @@ import { Video } from '../models/Video';
 import { VideoService } from './../services/VideoService';
 import { UploadResult } from '../types/UploadResult';
 import { SUCCESS_FILE_UPLOADED, ERR_FILE_UPLOADED, ERR_FILE_NOT_FOUND, ERR_FILE_RECORD_SAVED } from '../messages';
-import { injectable } from 'inversify';
 import { VideoApi } from '../apis/VideoApi';
 
 
@@ -26,11 +24,14 @@ export class VideoResolver {
   @Query(() => [Video])
   public async videos(): Promise<Video[]> {
     const videos = await this.service.getAllVideos();
+
     /*
       ...
       presentation layer logic
       ...
     */
+    console.log('video in resolver = ', videos);
+
     return videos;
   }
 
@@ -66,9 +67,8 @@ export class VideoResolver {
 
     const result = await this.service.saveVideo(filename, timestamp, size);
 
-    console.log('result in resolver = ', result);
-    console.log('videoStorage in resolver = ', videoStorage);
     if (!result) {
+      // TODO: more front end test
       return Promise.resolve({ ...uploadResult, message: ERR_FILE_UPLOADED });
     }
 

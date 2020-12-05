@@ -26,8 +26,6 @@ describe('VideoService unit test', () => {
     };
 
     const result = await instance.getAllVideos();
-    console.log('resule = ', result);
     assert.deepStrictEqual(result, expect, 'should be an array of videos');
-
   });
 });

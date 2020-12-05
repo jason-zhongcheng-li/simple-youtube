@@ -8,10 +8,7 @@ export class VideoApi {
     const result = [] as Video[];
 
     // simulate db transaction
-    setTimeout(async () => {
-      videoStorage.forEach(obj => result.push(obj));
-    }, 10000);
-
+    videoStorage.forEach(obj => result.push(obj));
     return result;
   }
 
@@ -19,9 +16,7 @@ export class VideoApi {
     let result: Video;
 
     // simulate db transaction
-    setTimeout(async () => {
-      [result] = videoStorage.filter((obj: Video) => obj.id === id);
-    }, 10000);
+    [result] = videoStorage.filter((obj: Video) => obj.id === id);
 
     return result;
   }
