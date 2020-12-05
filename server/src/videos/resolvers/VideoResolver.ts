@@ -42,11 +42,12 @@ export class VideoResolver {
   public async uploadFile(
     @Arg('file', () => GraphQLUpload) {
       createReadStream,
+      mimetype,
       filename
     }: FileUpload): Promise<boolean> {
 
-    console.log('file name from resolver = ', filename);
-    console.log('createReadStream() from resolver = ', createReadStream);
+    console.log('filename from resolver = ', filename);
+    console.log('mimetype from resolver = ', mimetype);
 
     const dirArr = __dirname.split('/');
     const dest = dirArr.slice(0, dirArr.length - 3).join('/').concat('/videos/');
