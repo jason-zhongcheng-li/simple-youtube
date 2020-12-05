@@ -7,8 +7,8 @@ import Loading from '../../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
 
 const uploadFileMutation = gql`
-  mutation UploadFile($file: Upload!) {
-    uploadFile(file: $file){
+  mutation UploadFile($file: Upload!, $size: Float!, $timestamp: Float!) {
+    uploadFile(file: $file, size: $size, timestamp: $timestamp){
       success,
       message
     }
@@ -20,7 +20,7 @@ const VideoUpload = () => {
   const [uploadFile, { loading, data, error }] = useMutation(uploadFileMutation, {
     onCompleted(data) {
       if (data.uploadFile.success) {
-        console.log(data);
+        console.log('data = ', data);
         toast.success(data.uploadFile.message);
       } else {
         toast.error(data.uploadFile.message);
@@ -30,7 +30,7 @@ const VideoUpload = () => {
 
   const onDrop = useCallback(
     ([file]) => {
-      uploadFile({ variables: { file } });
+      uploadFile({ variables: { file, size: file.size, timestamp: file.lastModified } });
     },
     [uploadFile]
   );

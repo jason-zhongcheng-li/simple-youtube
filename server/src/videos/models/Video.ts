@@ -4,12 +4,15 @@ import { Field, ID, ObjectType } from 'type-graphql';
 export class Video {
 
   @Field(() => ID)
-  public id: number;
+  public id?: number;
 
   @Field(() => String)
   public name: string;
 
-  @Field(() => Number)
-  public duration: number;
+  @Field(() => String)
+  public lastModified: string;
+
+  @Field(() => String)
+  public size: string;
 
 }

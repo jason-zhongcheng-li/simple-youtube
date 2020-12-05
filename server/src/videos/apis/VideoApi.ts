@@ -1,27 +1,39 @@
-import { injectable } from 'inversify';
+import { videoStorage } from './../../index';
 import { Video } from '../models/Video';
 
-
-@injectable()
 export class VideoApi {
 
   public async getVideos(): Promise<Video[]> {
 
-    const videos = [] as Video[];
-    const keys = Object.keys(localStorage);
+    const result = [] as Video[];
 
+    // simulate db transaction
     setTimeout(async () => {
-      keys.forEach(key => {
-        const obj = JSON.parse(localStorage.getItem(key) as string) as Video;
-        videos.push(obj);
-      });
+      videoStorage.forEach(obj => result.push(obj));
     }, 10000);
 
-    return videos;
+    return result;
   }
 
-  public async getVideoById(id: string): Promise<Video> {
-    return JSON.parse(localStorage.getItem(id) as string) as Video;
+  public async getVideoById(id: number): Promise<Video> {
+    let result: Video;
+
+    // simulate db transaction
+    setTimeout(async () => {
+      [result] = videoStorage.filter((obj: Video) => obj.id === id);
+    }, 10000);
+
+    return result;
+  }
+
+  public async saveVideo(video: Video): Promise<Video> {
+    // simulate db transaction and save entity with primary key
+    const id = videoStorage.length + 1;
+    video = { ...video, id } as Video;
+
+    videoStorage.push(video);
+
+    return video;
   }
 
 }

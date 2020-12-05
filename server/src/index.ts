@@ -1,12 +1,13 @@
-import { FileUpload } from 'graphql-upload';
 import 'reflect-metadata'; // to enable Decorator Metadata
 import * as express from 'express';
 import * as cors from 'cors';
 import { buildSchema } from 'type-graphql';
 import { ApolloServer, gql } from 'apollo-server-express';
-import { createWriteStream, existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import path = require('path');
+import { Video } from './videos/models/Video';
 
+export const videoStorage: Video[] = [];
 
 const startServer = async () => {
 
@@ -31,7 +32,9 @@ const startServer = async () => {
 
   server.applyMiddleware({ app });
 
-  app.listen({ port: 4000 }, () => console.info(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  app.listen({ port: 4000 }, () => {
+    console.info(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  }
   );
 };
 
