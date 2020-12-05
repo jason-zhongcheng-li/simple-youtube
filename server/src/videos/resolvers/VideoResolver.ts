@@ -46,21 +46,25 @@ export class VideoResolver {
     }: FileUpload): Promise<boolean> {
 
     console.log('file name from resolver = ', filename);
+    console.log('createReadStream() from resolver = ', createReadStream);
 
     const dirArr = __dirname.split('/');
-    const dest = dirArr.slice(0, dirArr.length - 3).join('/').concat('/assets/');
-
-    console.log('createReadStream() from resolver = ', createReadStream);
+    const dest = dirArr.slice(0, dirArr.length - 3).join('/').concat('/videos/');
 
     return new Promise(async (resolve, reject) => {
       try {
-        createReadStream()
-          .pipe(createWriteStream(dest + `${filename}`))
-          .on('finish', () => resolve(true))
-          .on('error', () => reject(false));
+        setTimeout(() => {
+          createReadStream()
+            .pipe(createWriteStream(dest + `${filename}`))
+            .on('finish', () => resolve(true))
+            .on('error', () => reject(false));
+        }, 5000);
       } catch (err) {
         console.error(err);
       }
     });
+
+
+
   }
 }

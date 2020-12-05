@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { useDropzone } from 'react-dropzone';
 import { useMutation } from '@apollo/react-hooks';
 import { ToastContainer, toast } from 'react-toastify';
+import Loading from '../components/Loading';
 
 const uploadFileMutation = gql`
   mutation UploadFile($file: Upload!) {
@@ -12,7 +13,7 @@ const uploadFileMutation = gql`
 
 const VideoUpload = props => {
 
-  const [uploadFile] = useMutation(uploadFileMutation, {
+  const [uploadFile, { loading, data, error }] = useMutation(uploadFileMutation, {
     // refetchQueries: [{ query: filesQuery }]
   });
 
@@ -26,7 +27,10 @@ const VideoUpload = props => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
 
+  if (loading) return <Loading />;
+
   return (
+
     <div className="container-form">
       <div className="row">
         <div className="offset-md-3 col-md-6">
