@@ -2,30 +2,13 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "description": "Shootsta",
   "dependencies": {
-    "@apollo/client": "^3.1.0",
-    "@material-ui/core": "^4.11.2",
-    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "apollo-boost": "^0.4.9",
-    "apollo-cache-inmemory": "^1.6.6",
-    "apollo-link-http": "^1.5.17",
-    "apollo-link-http-common": "^0.2.16",
-    "formik": "^2.2.5",
-    "graphql": "^15.4.0",
-    "graphql-tag": "^2.11.0",
-    "history": "^5.0.0",
     "react": "^17.0.1",
-    "react-apollo": "^3.1.5",
     "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "react-toastify": "^6.1.0",
-    "reactstrap": "^8.7.1",
-    "stream": "0.0.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -51,14 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.16",
-    "@types/node": "^12.19.8",
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.10",
-    "@types/react-router-dom": "^5.1.6",
-    "typescript": "^4.1.2",
-    "webpack-node-externals": "^2.5.2"
   }
 }

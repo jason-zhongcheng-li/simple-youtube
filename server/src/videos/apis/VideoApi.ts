@@ -6,12 +6,17 @@ import { Video } from '../models/Video';
 export class VideoApi {
 
   public async getVideos(): Promise<Video[]> {
+
     const videos = [] as Video[];
     const keys = Object.keys(localStorage);
-    keys.forEach(key => {
-      const obj = JSON.parse(localStorage.getItem(key) as string) as Video;
-      videos.push(obj);
-    });
+
+    setTimeout(async () => {
+      keys.forEach(key => {
+        const obj = JSON.parse(localStorage.getItem(key) as string) as Video;
+        videos.push(obj);
+      });
+    }, 10000);
+
     return videos;
   }
 

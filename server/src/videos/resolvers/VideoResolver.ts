@@ -39,19 +39,28 @@ export class VideoResolver {
   }
 
   @Mutation(() => Boolean)
-  public async uploadVideo(@Arg('path', () => GraphQLUpload) {
-    createReadStream,
-    filename
-  }: FileUpload): Promise<boolean> {
+  public async uploadFile(
+    @Arg('file', () => GraphQLUpload) {
+      createReadStream,
+      filename
+    }: FileUpload): Promise<boolean> {
+
+    console.log('file name from resolver = ', filename);
 
     const dirArr = __dirname.split('/');
     const dest = dirArr.slice(0, dirArr.length - 3).join('/').concat('/assets/');
 
-    return new Promise(async (resolve, reject) =>
-      createReadStream()
-        .pipe(createWriteStream(dest + `${filename}`))
-        .on('finish', () => resolve(true))
-        .on('error', () => reject(false))
-    );
+    console.log('createReadStream() from resolver = ', createReadStream);
+
+    return new Promise(async (resolve, reject) => {
+      try {
+        createReadStream()
+          .pipe(createWriteStream(dest + `${filename}`))
+          .on('finish', () => resolve(true))
+          .on('error', () => reject(false));
+      } catch (err) {
+        console.error(err);
+      }
+    });
   }
 }

@@ -10,10 +10,8 @@ export class VideoService {
   }
 
   public async getAllVideos(): Promise<Video[]> {
-    let videos: Video[];
-    setTimeout(async () => {
-      videos = await this.videoApi.getVideos();
-    }, 10000);
+    const videos = await this.videoApi.getVideos() as Video[];
+
     /*
         ...
         business logic
