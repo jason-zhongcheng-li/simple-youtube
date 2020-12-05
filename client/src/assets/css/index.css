@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: large;
 }
 
 code {
@@ -59,6 +60,8 @@ code {
   width: 50%;
   margin: 0 auto;
   margin-top: 10px;
+  text-align: left;
+  font-size: initial;
 }
 
 .container-form input[type=text], input[type=file] {
@@ -81,4 +84,14 @@ code {
     text-align: center !important;
     margin: 0;
     width: 100% !important;
+}
+
+.album {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+
+span, h2 {
+  font-size: initial;
 }

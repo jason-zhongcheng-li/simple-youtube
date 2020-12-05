@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ShootstaApolloProvider from './apollo/ShootstaApolloProvider';
 import './assets/css/index.css';
 import './assets/css/loading.css';
+import './assets/css/App.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

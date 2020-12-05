@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ToastContainer, toast } from 'react-toastify';
 import Loading from '../../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
+import Typography from '@material-ui/core/Typography';
 
 const uploadFileMutation = gql`
   mutation UploadFile($file: Upload!, $size: Float!, $timestamp: Float!) {
@@ -50,18 +51,21 @@ const VideoUpload = () => {
             <div {...getRootProps()} className="files">
               <input {...getInputProps()} className="files" />
             </div>
-            {isDragActive ? (
-              <p>Drop the files here ...</p>
-            ) : (
-                <p>Drag 'n' drop some files here, or click to select files</p>
-              )}
+            <Typography variant="h4" gutterBottom>
+              {isDragActive ? (
+                <p style={{ color: 'initial' }}>Drop the files here ...</p>
+              ) : (
+                  <p style={{ color: 'initial' }}>Drag 'n' drop some files here, or click to select files</p>
+                )}
+            </Typography>
+
           </div>
           <div className="form-group">
             <ToastContainer />
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
