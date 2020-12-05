@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { useDropzone } from 'react-dropzone';
 import { useMutation } from '@apollo/react-hooks';
 import { ToastContainer, toast } from 'react-toastify';
-import Loading from '../components/Loading';
+import Loading from '../../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
 
 const uploadFileMutation = gql`
