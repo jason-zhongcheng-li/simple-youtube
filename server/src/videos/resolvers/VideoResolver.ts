@@ -3,6 +3,8 @@ import { createWriteStream } from 'fs';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 import { Video } from '../models/Video';
 import { VideoService } from './../services/VideoService';
+import { UploadResult } from '../types/UploadResult';
+import { MSG_FILE_UPLOADED, ERR_FILE_UPLOADED } from '../messages';
 
 
 @Resolver()
@@ -38,13 +40,15 @@ export class VideoResolver {
     return video;
   }
 
-  @Mutation(() => Boolean)
+  @Mutation(() => UploadResult)
   public async uploadFile(
     @Arg('file', () => GraphQLUpload) {
       createReadStream,
       mimetype,
       filename
-    }: FileUpload): Promise<boolean> {
+    }: FileUpload): Promise<UploadResult> {
+
+    const uploadResult: UploadResult = { success: true, message: MSG_FILE_UPLOADED };
 
     console.log('filename from resolver = ', filename);
     console.log('mimetype from resolver = ', mimetype);
@@ -57,9 +61,9 @@ export class VideoResolver {
         setTimeout(() => {
           createReadStream()
             .pipe(createWriteStream(dest + `${filename}`))
-            .on('finish', () => resolve(true))
-            .on('error', () => reject(false));
-        }, 5000);
+            .on('finish', () => resolve(uploadResult))
+            .on('error', () => reject({ ...uploadResult, success: false, message: ERR_FILE_UPLOADED }));
+        }, 2000);
       } catch (err) {
         console.error(err);
       }
