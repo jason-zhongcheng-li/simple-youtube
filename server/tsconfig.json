@@ -23,7 +23,9 @@
   ],
   "include": [
     "src/",
-    "test/",
-    "assets/"
+    "test/"
+  ],
+  "files": [
+    "decs.d.ts"
   ]
 }

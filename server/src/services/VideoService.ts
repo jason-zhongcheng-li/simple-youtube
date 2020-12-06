@@ -1,6 +1,5 @@
+import { Video } from '../models/Video';
 import { VideoApi } from './../apis/VideoApi';
-import { Video } from './../models/Video';
-import { videoStorage } from './../../index';
 
 export class VideoService {
   constructor(private videoApi: VideoApi) {

@@ -1,12 +1,12 @@
-import { videoStorage } from './../../index';
+import { dest } from './../index';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 import { createWriteStream } from 'fs';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { Video } from '../models/Video';
 import { VideoService } from './../services/VideoService';
-import { UploadResult } from '../types/UploadResult';
 import { SUCCESS_FILE_UPLOADED, ERR_FILE_UPLOADED, ERR_FILE_NOT_FOUND, ERR_FILE_RECORD_SAVED } from '../messages';
 import { VideoApi } from '../apis/VideoApi';
+import { Video } from '../models/Video';
+import { UploadResult } from '../types/UploadResult';
 
 
 @Resolver()
@@ -30,8 +30,6 @@ export class VideoResolver {
       presentation layer logic
       ...
     */
-    console.log('video in resolver = ', videos);
-
     return videos;
   }
 
@@ -59,12 +57,6 @@ export class VideoResolver {
     //   console.log('test .....................');
     //   return Promise.reject({ ...uploadResult, message: ERR_FILE_NOT_FOUND });
     // }
-
-    console.log('filename from resolver = ', filename);
-
-    const dirArr = __dirname.split('/');
-    const dest = dirArr.slice(0, dirArr.length - 3).join('/').concat('/videos/');
-
     const result = await this.service.saveVideo(filename, timestamp, size);
 
     if (!result) {
@@ -76,7 +68,7 @@ export class VideoResolver {
       try {
         setTimeout(() => {
           createReadStream()
-            .pipe(createWriteStream(dest + `${filename}`))
+            .pipe(createWriteStream(dest.concat(`/${filename}`)))
             .on('finish', () => resolve({ ...uploadResult, success: true, message: SUCCESS_FILE_UPLOADED }))
             .on('error', () => reject({ ...uploadResult, message: ERR_FILE_UPLOADED }));
         }, 2000);

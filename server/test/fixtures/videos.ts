@@ -1,4 +1,4 @@
-import { Video } from '../../src/videos/models/Video';
+import { Video } from '../../src/models/Video';
 
 export const videos = [
   { id: 1, name: 'video-1', size: '23mb' },

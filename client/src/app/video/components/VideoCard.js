@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
@@ -22,34 +22,18 @@ const VideoCard = props => {
 
   const { video } = props;
 
-  const classes = useStyles();
   return (
-    <Card className={classes.root} >
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://youtu.be/il9SZU_nsVc"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    <div className="gallery">
+      <Link to={`/player/${video.id}`}>
+        <img src={`http://localhost:4000/video/${video.id}/poster`} alt="Cinque Terre" width="600" height="400" />
+      </Link>
+      <div className="desc">{video.name}</div>
+      <div className="desc">{video.size}</div>
+      <div className="desc">{video.lastModified}</div>
+    </div>
+
+
+
   );
 };
 

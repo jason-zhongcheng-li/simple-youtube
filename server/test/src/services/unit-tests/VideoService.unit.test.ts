@@ -1,6 +1,6 @@
 import * as assert from 'assert';
-import { VideoApi } from './../../../../src/videos/apis/VideoApi';
-import { VideoService } from '../../../../src/videos/services/VideoService';
+import { VideoApi } from './../../../../src/apis/VideoApi';
+import { VideoService } from '../../../../src/services/VideoService';
 import { videos } from './../../../fixtures/videos';
 
 

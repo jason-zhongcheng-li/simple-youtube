@@ -8,12 +8,10 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <Header />
-      <header className="App-header">
-        <Switch>
-          <Route exact path="/" component={VideoList} />
-          <Route exact path="/upload" component={VideoUpload} />
-        </Switch>
-      </header>
+      <Switch>
+        <Route exact path="/" component={VideoList} />
+        <Route exact path="/upload" component={VideoUpload} />
+      </Switch>
     </BrowserRouter>
   )
 }

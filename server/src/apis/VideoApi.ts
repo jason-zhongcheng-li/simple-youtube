@@ -1,5 +1,5 @@
-import { videoStorage } from './../../index';
 import { Video } from '../models/Video';
+import { videoStorage } from './../index';
 
 export class VideoApi {
 

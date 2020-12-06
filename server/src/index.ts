@@ -5,11 +5,16 @@ import { buildSchema } from 'type-graphql';
 import { ApolloServer, gql } from 'apollo-server-express';
 import { existsSync, mkdirSync } from 'fs';
 import path = require('path');
-import { Video } from './videos/models/Video';
+import VideoController from './controllers/VideoController';
+import { Video } from './models/Video';
 
 export const videoStorage: Video[] = [];
 
+export const dest = path.join(__dirname, '../videos/');
+
 const startServer = async () => {
+
+  const videoController = new VideoController();
 
   const schema = await buildSchema({
     resolvers: [__dirname + '/**/resolvers/*.js'],
@@ -20,8 +25,8 @@ const startServer = async () => {
     schema
   });
 
-  if (!existsSync(path.join(__dirname, '../videos'))) {
-    mkdirSync(path.join(__dirname, '../videos'));
+  if (!existsSync(dest)) {
+    mkdirSync(dest);
   }
 
   const app = express();
@@ -29,6 +34,7 @@ const startServer = async () => {
     credentials: false,
     origin: 'http://localhost:3000'
   }));
+  app.use('/', videoController.router);
 
   server.applyMiddleware({ app });
 
