@@ -10,7 +10,7 @@ class VideoController implements Controller {
   public router = Router();
 
   constructor() {
-    this.router.get(`${this.path}/:id`, this.getVideoById);
+    this.router.get(`${this.path}/:id/play`, this.getVideoById);
     this.router.get(`${this.path}/:id/poster`, this.getThumbnail);
   }
 

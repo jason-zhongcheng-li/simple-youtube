@@ -53,10 +53,6 @@ export class VideoResolver {
 
     const uploadResult: UploadResult = { success: false, message: '' };
 
-    // if (!!filename) {
-    //   console.log('test .....................');
-    //   return Promise.reject({ ...uploadResult, message: ERR_FILE_NOT_FOUND });
-    // }
     const result = await this.service.saveVideo(filename, timestamp, size);
 
     if (!result) {
