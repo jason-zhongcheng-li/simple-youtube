@@ -31,10 +31,10 @@ export class VideoService {
 
   public async saveVideo(filename: string, timestamp: number, size: number): Promise<Boolean> {
 
-    const lastModifiedDate = new Date(timestamp.toString());
+    const lastModifiedDate = new Date(timestamp);
     const sizeMB = (Math.round(size / 1024 / 1024 * 100) / 100).toString();
 
-    const video: Video = { name: filename, size: sizeMB, lastModified: lastModifiedDate.toLocaleString() };
+    const video: Video = { name: filename, size: sizeMB, lastModified: lastModifiedDate.toLocaleDateString() };
 
     const result = await this.videoApi.saveVideo(video);
 

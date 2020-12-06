@@ -52,7 +52,7 @@ const VideoUpload = () => {
               {isDragActive ? (
                 <p style={{ color: 'initial' }}>Drop the files here ...</p>
               ) : (
-                  <p style={{ color: 'initial' }}>Drag 'n' drop some files here, or click to select files</p>
+                  <p style={{ color: 'initial' }}>Drag & drop video file here, or click to select file to upload</p>
                 )}
             </Typography>
 

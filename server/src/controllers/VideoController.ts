@@ -52,8 +52,6 @@ class VideoController implements Controller {
     const id = +`${req.params.id}`;
     const path = this.getFullPath(id);
 
-    console.log(path);
-
     await thumbsupply.generateThumbnail(path)
       .then((thumb: any) => res.sendFile(thumb));
   }
