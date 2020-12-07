@@ -1,7 +1,8 @@
+import { dummyVideos } from './../../fixtures/videos';
+import { VideoService } from './../../../src/services/VideoService';
 import * as assert from 'assert';
-import { VideoApi } from './../../../../src/apis/VideoApi';
-import { VideoService } from '../../../../src/services/VideoService';
-import { videos } from './../../../fixtures/videos';
+import { VideoApi } from '../../../src/apis/VideoApi';
+
 
 
 describe('VideoService unit test', () => {
@@ -15,14 +16,14 @@ describe('VideoService unit test', () => {
 
   it('should get all videos', async () => {
     const keys = ['1', '2', '3'];
-    const expect = videos;
+    const expect = dummyVideos;
 
     Object.keys = (arg: Object) => {
       return keys;
     };
 
     api.getVideos = async () => {
-      return videos;
+      return dummyVideos;
     };
 
     const result = await instance.getAllVideos();

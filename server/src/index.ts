@@ -8,6 +8,7 @@ import path = require('path');
 import VideoController from './controllers/VideoController';
 import { Video } from './models/Video';
 
+// simulate database
 export const videoStorage: Video[] = [];
 
 export const videoPath = path.join(__dirname, '../videos/');

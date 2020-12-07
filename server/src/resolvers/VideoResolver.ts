@@ -12,10 +12,8 @@ import { UploadResult } from '../types/UploadResult';
 @Resolver()
 export class VideoResolver {
 
-  private service: VideoService;
-
-  constructor() {
-    this.service = new VideoService(new VideoApi());
+  constructor(private service: VideoService) {
+    this.service = service;
   }
 
   @Query(() => String)
@@ -26,7 +24,6 @@ export class VideoResolver {
   @Query(() => [Video])
   public async videos(): Promise<Video[]> {
     const videos = await this.service.getAllVideos();
-
     /*
       ...
       presentation layer logic
