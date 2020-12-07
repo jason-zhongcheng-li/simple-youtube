@@ -15,4 +15,6 @@ export class Video {
   @Field(() => String)
   public size: string;
 
+  @Field(() => String)
+  public fullPath: string;
 }

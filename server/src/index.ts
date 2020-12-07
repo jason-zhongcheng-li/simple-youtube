@@ -10,14 +10,15 @@ import { Video } from './models/Video';
 
 export const videoStorage: Video[] = [];
 
-export const dest = path.join(__dirname, '../videos/');
+export const videoPath = path.join(__dirname, '../videos/');
+export const resolverPath = path.join(__dirname, '/**/resolvers/*.js');
 
 const startServer = async () => {
 
   const videoController = new VideoController();
 
   const schema = await buildSchema({
-    resolvers: [__dirname + '/**/resolvers/*.js'],
+    resolvers: [resolverPath],
     validate: false
   });
 
@@ -25,8 +26,8 @@ const startServer = async () => {
     schema
   });
 
-  if (!existsSync(dest)) {
-    mkdirSync(dest);
+  if (!existsSync(videoPath)) {
+    mkdirSync(videoPath);
   }
 
   const app = express();

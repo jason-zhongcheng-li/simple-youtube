@@ -1,4 +1,4 @@
-import { dest } from './../index';
+import { videoPath } from './../index';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
 import { createWriteStream } from 'fs';
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
@@ -12,7 +12,9 @@ import { UploadResult } from '../types/UploadResult';
 @Resolver()
 export class VideoResolver {
 
-  constructor(private service: VideoService) {
+  private service: VideoService;
+
+  constructor() {
     this.service = new VideoService(new VideoApi());
   }
 
@@ -52,8 +54,9 @@ export class VideoResolver {
     }: FileUpload, @Arg('size') size: number, @Arg('timestamp') timestamp: number): Promise<UploadResult> {
 
     const uploadResult: UploadResult = { success: false, message: '' };
+    const fullPath = videoPath.concat(`/${filename}`);
 
-    const result = await this.service.saveVideo(filename, timestamp, size);
+    const result = await this.service.saveVideo(timestamp, size, fullPath);
 
     if (!result) {
       // TODO: more front end test
@@ -64,7 +67,7 @@ export class VideoResolver {
       try {
         setTimeout(() => {
           createReadStream()
-            .pipe(createWriteStream(dest.concat(`/${filename}`)))
+            .pipe(createWriteStream(fullPath))
             .on('finish', () => resolve({ ...uploadResult, success: true, message: SUCCESS_FILE_UPLOADED }))
             .on('error', () => reject({ ...uploadResult, message: ERR_FILE_UPLOADED }));
         }, 2000);

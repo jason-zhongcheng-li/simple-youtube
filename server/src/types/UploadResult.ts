@@ -1,3 +1,4 @@
+import { VideoInput } from './../inputs/VideoInput';
 import { Field, ID, ObjectType } from 'type-graphql';
 
 @ObjectType()
@@ -8,5 +9,4 @@ export class UploadResult {
 
   @Field(() => String)
   public message: string;
-
 }

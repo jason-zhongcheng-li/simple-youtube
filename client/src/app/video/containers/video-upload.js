@@ -16,6 +16,15 @@ const uploadFileMutation = gql`
   }
 `;
 
+const saveVideoMutation = gql`
+  mutation SaveVideo($input: Upload!, $size: Float!, $timestamp: Float!) {
+    uploadFile(file: $file, size: $size, timestamp: $timestamp){
+      success,
+      message
+    }
+  }
+`;
+
 const VideoUpload = () => {
 
   const [uploadFile, { loading, data, error }] = useMutation(uploadFileMutation, {
