@@ -50,8 +50,9 @@ export class PlayerService {
     const video = await this.videoApi.getVideoById(+req.params.id);
 
     if (!video) {
-      // TODO
+
     }
+
 
     await thumbsupply.generateThumbnail(video.fullPath)
       .then((thumb: any) => res.sendFile(thumb));

@@ -37,7 +37,7 @@ describe('VideoService unit test', () => {
   // Set timeout in this particular function test to void 2000ms timeout for an async function call
   it('should upload a video file', async function () {
     // tslint:disable-next-line: no-invalid-this
-    this.timeout(3000);
+    this.timeout(2000);
     let createWriteStream: any;
     const fullPath = videoPath + 'testVideoUpload.txt';
     const uploadResult: UploadResult = { success: false, message: '' };

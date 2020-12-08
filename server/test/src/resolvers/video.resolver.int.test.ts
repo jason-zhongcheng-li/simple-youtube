@@ -1,9 +1,8 @@
-import { graphQlCall } from './../graphQlCall';
-import { loadFixtures } from './../fixtures/index';
 import * as assert from 'assert';
-import { videoStorage } from '../../src';
-import { dummyVideos } from '../fixtures/videos';
-
+import { videoStorage } from '../../../src';
+import { loadFixtures } from '../../fixtures';
+import { dummyVideos } from '../../fixtures/videos';
+import { graphQlCall } from '../../graphQlCall';
 
 
 const videosQueryName = `{
@@ -20,7 +19,7 @@ const videosQuerySize = `{
 }
 `;
 
-describe('VideoResolver function test', () => {
+describe('VideoResolver integration test', () => {
 
   beforeEach(() => {
     // loading dumy data from db
@@ -35,6 +34,7 @@ describe('VideoResolver function test', () => {
   });
 
   it('should get all videos with name only', async () => {
+
     const expect = dummyVideos.map(video => ({ name: video.name }));
     const response = await graphQlCall({
       source: videosQueryName
@@ -46,6 +46,7 @@ describe('VideoResolver function test', () => {
   });
 
   it('should get all videos with size field only', async () => {
+
     const expect = dummyVideos.map(video => ({ size: video.size }));
     const response = await graphQlCall({
       source: videosQuerySize

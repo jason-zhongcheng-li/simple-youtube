@@ -11,8 +11,6 @@ interface Options {
   }>;
 }
 
-
-
 export const graphQlCall = async ({ source, variableValues }: Options) => {
 
   const schema: GraphQLSchema = await buildSchema({

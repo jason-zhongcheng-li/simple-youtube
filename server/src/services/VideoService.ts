@@ -58,7 +58,7 @@ export class VideoService {
             .pipe(createWriteStream(fullPath))
             .on('finish', () => resolve({ ...uploadResult, success: true, message: SUCCESS_FILE_UPLOADED }))
             .on('error', () => reject({ ...uploadResult, message: ERR_FILE_UPLOADED }));
-        }, 2000);
+        }, 1000);
       } catch (err) {
         console.error(err);
       }

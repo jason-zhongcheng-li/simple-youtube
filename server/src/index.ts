@@ -16,7 +16,7 @@ export const resolverPath = path.join(__dirname, '/**/resolvers/*.js');
 
 const startServer = async () => {
 
-  const videoController = new VideoController();
+  const videoController = new VideoController(undefined);
 
   const schema = await buildSchema({
     resolvers: [resolverPath],
@@ -42,8 +42,7 @@ const startServer = async () => {
 
   app.listen({ port: 4000 }, () => {
     console.info(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-  }
-  );
+  });
 };
 
 startServer();
