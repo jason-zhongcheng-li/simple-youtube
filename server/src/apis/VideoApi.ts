@@ -3,6 +3,9 @@ import { videoStorage } from './../index';
 
 export class VideoApi {
 
+  /**
+   * Get all videos
+   */
   public async getVideos(): Promise<Video[]> {
 
     const result = [] as Video[];
@@ -12,6 +15,9 @@ export class VideoApi {
     return result;
   }
 
+  /**
+   * @param  {number} id
+   */
   public async getVideoById(id: number): Promise<Video> {
     let result: Video;
 
@@ -21,6 +27,9 @@ export class VideoApi {
     return result;
   }
 
+  /**
+   * @param  {Video} video
+   */
   public async saveVideo(video: Video): Promise<Video> {
     // simulate db transaction and save entity with primary key
     const id = videoStorage.length + 1;

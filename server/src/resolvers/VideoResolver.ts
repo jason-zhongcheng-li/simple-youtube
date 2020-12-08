@@ -22,6 +22,9 @@ export class VideoResolver {
     }
   }
 
+  /**
+   * @param  {Video} --> result type of grapql query
+   */
   @Query(() => [Video])
   public async videos(): Promise<Video[]> {
     const videos = await this.service.getAllVideos();
@@ -32,7 +35,10 @@ export class VideoResolver {
     */
     return videos;
   }
-
+  /**
+   * @param  {Video}  --> result type of grapql query
+   * @param  {number} id --> variable in useQuery hook
+   */
   @Query(() => Video)
   public async video(@Arg('id') id: number): Promise<Video> {
     const video = await this.service.getVideoById(id);
@@ -44,6 +50,15 @@ export class VideoResolver {
     return video;
   }
 
+
+  /**
+   * @param  {UploadResult} --> result type of grapql query
+   * @param  {GraphQLUpload} --> variable type from useMutation hook
+   * @param  {createReadStream}  --> destructured property from variable
+   * @param  {filename}  --> destructured property from variable
+   * @param  {number} size --> file size
+   * @param  {number} timestamp --> last modified timestamp of uploaded file
+   */
   @Mutation(() => UploadResult)
   public async uploadVideo(
     @Arg('video', () => GraphQLUpload) {

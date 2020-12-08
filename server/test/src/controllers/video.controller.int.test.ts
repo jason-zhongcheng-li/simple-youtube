@@ -63,6 +63,4 @@ describe('VideoController integration test', () => {
         if (err) { throw err; }
       });
   });
-
-
 });

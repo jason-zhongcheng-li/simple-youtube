@@ -11,6 +11,7 @@ export class VideoService {
     this.videoApi = videoApi;
   }
 
+
   public async getAllVideos(): Promise<Video[]> {
     const videos = await this.videoApi.getVideos();
     /*
@@ -21,6 +22,9 @@ export class VideoService {
     return videos;
   }
 
+  /**
+   * @param  {number} id
+   */
   public async getVideoById(id: number): Promise<Video> {
     const video = await this.videoApi.getVideoById(id);
     /*
@@ -31,6 +35,11 @@ export class VideoService {
     return video;
   }
 
+  /**
+   * @param  {number} timestamp
+   * @param  {number} size
+   * @param  {string} fullPath
+   */
   public async saveVideo(timestamp: number, size: number, fullPath: string): Promise<Video | boolean> {
 
     const lastModifiedDate = new Date(timestamp);
@@ -41,6 +50,11 @@ export class VideoService {
     return await this.videoApi.saveVideo(video);
   }
 
+  /**
+   * @param  {any} createReadStream
+   * @param  {string} fullPath
+   * @param  {UploadResult} uploadResult
+   */
   public async uploadVideo(createReadStream: any, fullPath: string, uploadResult: UploadResult): Promise<UploadResult> {
     return new Promise(async (resolve, reject) => {
       try {

@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 
+
+// This is also entity class in the project
 @ObjectType()
 export class Video {
 

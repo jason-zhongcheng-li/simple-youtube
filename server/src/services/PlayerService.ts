@@ -10,6 +10,11 @@ export class PlayerService {
     this.videoApi = videoApi;
   }
 
+  /**
+   * @param  {any} req
+   * @param  {any} res
+   * @param  {NextFunction} next
+   */
   public async playVideo(req: any, res: any, next: NextFunction): Promise<void> {
     const video = await this.videoApi.getVideoById(+req.params.id);
 
@@ -46,6 +51,12 @@ export class PlayerService {
     }
   }
 
+  /**
+   * Generate thumbnail for the video.
+   * A png file will be kept in local cache.
+   * @param  {any} req
+   * @param  {any} res
+   */
   public async generateThumbnail(req: any, res: any): Promise<void> {
     const video = await this.videoApi.getVideoById(+req.params.id);
 

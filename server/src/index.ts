@@ -23,6 +23,7 @@ const startServer = async () => {
     validate: false
   });
 
+  // register schema to ApolloServer
   const server = new ApolloServer({
     schema
   });
@@ -32,10 +33,14 @@ const startServer = async () => {
   }
 
   const app = express();
+
+  // enable cross site access
   app.use(cors({
     credentials: false,
     origin: 'http://localhost:3000'
   }));
+
+  // setup express router
   app.use('/', videoController.router);
 
   server.applyMiddleware({ app });
@@ -46,5 +51,3 @@ const startServer = async () => {
 };
 
 startServer();
-
-// export default app;
