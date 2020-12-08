@@ -49,6 +49,11 @@ Go to *coverage* folder and open *index.html* file with any browser, you can vie
 ## Start up application
 > Note: Before you start up the applicatoin, please make sure your ports of *3000* and *4000* are free to go on your local.
 
+Compile backend code in the *server* folder:
+```bash
+$ tsc
+```
+
 Execute following script in both *client* and *server* folder to start up application
 
 ```bash
