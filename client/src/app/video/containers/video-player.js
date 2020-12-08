@@ -6,7 +6,7 @@ const VideoPlayer = props => {
 
   return (
     <div className="container">
-      <PlayVideo video={video} />
+      {video && <PlayVideo video={video} />}
     </div>
   )
 }

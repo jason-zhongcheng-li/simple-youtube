@@ -29,8 +29,8 @@ describe('VideoResolver unit test', () => {
   });
 
   it('should get video by id', async () => {
-    const id = '1';
-    const [expect] = dummyVideos.filter((obj: Video) => obj.id === +id);
+    const id = 1;
+    const [expect] = dummyVideos.filter((obj: Video) => obj.id === id);
 
 
     service.getVideoById = async (id: number) => {

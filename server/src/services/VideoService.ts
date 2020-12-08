@@ -22,10 +22,7 @@ export class VideoService {
   }
 
   public async getVideoById(id: number): Promise<Video> {
-    let video: Video;
-    setTimeout(async () => {
-      video = await this.videoApi.getVideoById(id);
-    }, 10000);
+    const video = await this.videoApi.getVideoById(id);
     /*
      ...
      business logic

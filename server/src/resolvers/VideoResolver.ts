@@ -22,15 +22,9 @@ export class VideoResolver {
     }
   }
 
-  @Query(() => String)
-  public helloYoutube() {
-    return 'Hellow Youtube!';
-  }
-
   @Query(() => [Video])
   public async videos(): Promise<Video[]> {
     const videos = await this.service.getAllVideos();
-
     /*
       ...
       presentation layer logic
@@ -40,8 +34,8 @@ export class VideoResolver {
   }
 
   @Query(() => Video)
-  public async video(@Arg('id') id: String): Promise<Video> {
-    const video = await this.service.getVideoById(+id);
+  public async video(@Arg('id') id: number): Promise<Video> {
+    const video = await this.service.getVideoById(id);
     /*
       ...
       presentation layer logic

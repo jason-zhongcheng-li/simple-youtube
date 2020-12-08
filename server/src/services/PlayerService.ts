@@ -53,7 +53,6 @@ export class PlayerService {
 
     }
 
-
     await thumbsupply.generateThumbnail(video.fullPath)
       .then((thumb: any) => res.sendFile(thumb));
   }
