@@ -1,4 +1,4 @@
-# Shootsta Simplified Youtube
+# Shootsta Simplified Youtube - Developer Coding Challenge
 ![](https://img.shields.io/node/v/mocha)
 ![code size](https://img.shields.io/github/languages/code-size/zhongchengli/simple-youtube)
 
@@ -44,10 +44,10 @@ $ npm run coverage
 
 ## Code Coverage
 As a result of execute unit/function tests above, there will be two folders (*.nyc_output* and *coverage*) automatically created at the root of the server application.
-Go to *coverage* folder and open *index.html* file with browser, you can view the report of code coverage.
+Go to *coverage* folder and open *index.html* file with any browser, you can view the report of code coverage.
 
 ## Start up application
-> Note: Before you start up the applicatoin, please make sure your 3000 and 4000 ports are free to go on your local.
+> Note: Before you start up the applicatoin, please make sure your ports of *3000* and *4000* are free to go on your local.
 
 Execute following script in both *client* and *server* folder to start up application
 
