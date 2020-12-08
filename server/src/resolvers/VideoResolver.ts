@@ -53,12 +53,7 @@ export class VideoResolver {
     const uploadResult: UploadResult = { success: false, message: '' };
     const fullPath = videoPath.concat(`/${filename}`);
 
-    const result = await this.service.saveVideo(timestamp, size, fullPath);
-
-    if (!result) {
-      // TODO: more front end test
-      return Promise.resolve({ ...uploadResult, message: ERR_FILE_UPLOADED });
-    }
+    await this.service.saveVideo(timestamp, size, fullPath);
 
     return await this.service.uploadVideo(createReadStream, fullPath, uploadResult);
   }

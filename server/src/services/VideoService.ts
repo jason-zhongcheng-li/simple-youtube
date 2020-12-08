@@ -38,12 +38,7 @@ export class VideoService {
 
     const video: Video = { name: basename(fullPath, '.mp4'), size: sizeMB, lastModified: lastModifiedDate.toLocaleDateString(), fullPath };
 
-    const result = await this.videoApi.saveVideo(video);
-
-    if (!result) {
-      return null;
-    }
-    return result;
+    return await this.videoApi.saveVideo(video);
   }
 
   public async uploadVideo(createReadStream: any, fullPath: string, uploadResult: UploadResult): Promise<UploadResult> {

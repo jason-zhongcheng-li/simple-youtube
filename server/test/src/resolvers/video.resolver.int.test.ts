@@ -1,4 +1,6 @@
 import * as assert from 'assert';
+import { FileUpload } from 'graphql-upload';
+import { Readable } from 'stream';
 import { videoStorage } from '../../../src';
 import { loadFixtures } from '../../fixtures';
 import { dummyVideos } from '../../fixtures/videos';
@@ -39,7 +41,7 @@ const UPLOAD_VIDEO = `
   }
 `;
 
-describe.only('VideoResolver integration test', () => {
+describe('VideoResolver integration test', () => {
 
   beforeEach(() => {
     // loading dumy data from db
@@ -92,5 +94,38 @@ describe.only('VideoResolver integration test', () => {
     const result = response.data.video;
 
     assert.deepStrictEqual(JSON.parse(JSON.stringify(result)), expect);
+  });
+
+  it('should upload video file', async () => {
+
+    const expect = {
+      success: true,
+      message: 'Video has been uploaded successfully.'
+    };
+
+    const createReadStream = () => {
+      const stream = new Readable({ objectMode: true });
+
+      stream._read = () => {
+        stream.push('abc123');
+        stream.push(null);
+      };
+
+      return stream;
+    };
+
+    const fileArg = { createReadStream, filename: 'test-video.mp4' } as FileUpload;
+
+    assert.strictEqual(videoStorage.length, 3, 'should be 3 videos before upload');
+
+    const response = await graphQlCall({
+      source: UPLOAD_VIDEO,
+      variableValues: { video: fileArg, size: 33554432, timestamp: 1606816548750 }
+    });
+
+    const result = response.data.uploadVideo;
+
+    assert.deepStrictEqual(JSON.parse(JSON.stringify(result)), expect);
+    assert.strictEqual(videoStorage.length, 4, 'should be 4 videos before upload');
   });
 });

@@ -18,15 +18,16 @@ describe('VideoController unit test', () => {
     app.use(controller.router);
   });
 
-  it('should call get request', async () => {
+  it('should call /video/${id}/poster', async () => {
+
+    const id = 1;
 
     playService.generateThumbnail = async (req: any, res: any) => {
       res.send('/temp/test.png');
     };
 
-    const test = request(app)
-      .get('/video/1/poster');
-    test
+    request(app)
+      .get(`/video/${id}/poster`)
       .expect(200, '/temp/test.png')
       .end(function (err: any, res: any) {
         if (err) { throw err; }

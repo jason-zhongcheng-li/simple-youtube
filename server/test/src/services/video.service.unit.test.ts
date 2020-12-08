@@ -38,13 +38,13 @@ describe('VideoService unit test', () => {
   it('should upload a video file', async function () {
     // tslint:disable-next-line: no-invalid-this
     this.timeout(2000);
-    let createWriteStream: any;
+    let createReadStream: any;
     const fullPath = videoPath + 'testVideoUpload.txt';
     const uploadResult: UploadResult = { success: false, message: '' };
 
     const expect = { success: true, message: 'Video has been uploaded successfully.' };
 
-    createWriteStream = () => {
+    createReadStream = () => {
       const stream = new Readable({ objectMode: true });
 
       stream._read = () => {
@@ -55,7 +55,7 @@ describe('VideoService unit test', () => {
       return stream;
     };
 
-    const result = await instance.uploadVideo(createWriteStream, fullPath, uploadResult);
+    const result = await instance.uploadVideo(createReadStream, fullPath, uploadResult);
     assert.deepStrictEqual(result, expect, 'should be uploading result');
   });
 });

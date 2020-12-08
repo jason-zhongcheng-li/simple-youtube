@@ -49,10 +49,6 @@ export class PlayerService {
   public async generateThumbnail(req: any, res: any): Promise<void> {
     const video = await this.videoApi.getVideoById(+req.params.id);
 
-    if (!video) {
-
-    }
-
     await thumbsupply.generateThumbnail(video.fullPath)
       .then((thumb: any) => res.sendFile(thumb));
   }
