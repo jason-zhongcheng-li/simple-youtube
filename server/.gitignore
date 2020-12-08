@@ -11,8 +11,6 @@
 
 /.nyc_output
 
-# /.testing_assets
-
 /coverage
 
 # Installed libs
