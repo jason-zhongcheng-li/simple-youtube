@@ -1,4 +1,4 @@
-# Shootsta Developer Coding Challenge
+# Shootsta Simplifed Youtube Frontend
 
 # Getting Started with Create React App
 
