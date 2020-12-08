@@ -13,6 +13,9 @@
 
 /coverage
 
+# Ignore video files for testing only
+/test/assets
+
 # Installed libs
 /node_modules
 
