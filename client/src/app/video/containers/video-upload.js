@@ -7,9 +7,9 @@ import Loading from '../../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
 import Typography from '@material-ui/core/Typography';
 
-const uploadFileMutation = gql`
-  mutation UploadFile($file: Upload!, $size: Float!, $timestamp: Float!) {
-    uploadFile(file: $file, size: $size, timestamp: $timestamp){
+const UPLOAD_VIDEO = gql`
+  mutation UploadVido($video: Upload!, $size: Float!, $timestamp: Float!) {
+    uploadVideo(video: $video, size: $size, timestamp: $timestamp){
       success,
       message
     }
@@ -18,21 +18,21 @@ const uploadFileMutation = gql`
 
 const VideoUpload = () => {
 
-  const [uploadFile, { loading, data, error }] = useMutation(uploadFileMutation, {
+  const [uploadVideo, { loading, data, error }] = useMutation(UPLOAD_VIDEO, {
     onCompleted(data) {
-      if (data.uploadFile.success) {
-        toast.success(data.uploadFile.message);
+      if (data.uploadVideo.success) {
+        toast.success(data.uploadVideo.message);
       } else {
-        toast.error(data.uploadFile.message);
+        toast.error(data.uploadVideo.message);
       }
     }
   });
 
   const onDrop = useCallback(
     ([file]) => {
-      uploadFile({ variables: { file, size: file.size, timestamp: file.lastModified } });
+      uploadVideo({ variables: { video: file, size: file.size, timestamp: file.lastModified } });
     },
-    [uploadFile]
+    [uploadVideo]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });

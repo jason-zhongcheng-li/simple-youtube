@@ -1,6 +1,6 @@
-import { videoPath } from './../index';
+import { videoPath, videoStorage } from './../index';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
-import { createWriteStream } from 'fs';
+
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 import { VideoService } from './../services/VideoService';
 import { SUCCESS_FILE_UPLOADED, ERR_FILE_UPLOADED, ERR_FILE_NOT_FOUND, ERR_FILE_RECORD_SAVED } from '../messages';
@@ -44,12 +44,11 @@ export class VideoResolver {
   }
 
   @Mutation(() => UploadResult)
-  public async uploadFile(
-    @Arg('file', () => GraphQLUpload) {
+  public async uploadVideo(
+    @Arg('video', () => GraphQLUpload) {
       createReadStream,
       filename
     }: FileUpload, @Arg('size') size: number, @Arg('timestamp') timestamp: number): Promise<UploadResult> {
-
     const uploadResult: UploadResult = { success: false, message: '' };
     const fullPath = videoPath.concat(`/${filename}`);
 
@@ -60,17 +59,6 @@ export class VideoResolver {
       return Promise.resolve({ ...uploadResult, message: ERR_FILE_UPLOADED });
     }
 
-    return new Promise(async (resolve, reject) => {
-      try {
-        setTimeout(() => {
-          createReadStream()
-            .pipe(createWriteStream(fullPath))
-            .on('finish', () => resolve({ ...uploadResult, success: true, message: SUCCESS_FILE_UPLOADED }))
-            .on('error', () => reject({ ...uploadResult, message: ERR_FILE_UPLOADED }));
-        }, 2000);
-      } catch (err) {
-        console.error(err);
-      }
-    });
+    return await this.service.uploadVideo(createReadStream, fullPath, uploadResult);
   }
 }

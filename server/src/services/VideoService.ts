@@ -1,5 +1,8 @@
+import { createWriteStream } from 'fs';
 import { basename } from 'path';
+import { ERR_FILE_UPLOADED, SUCCESS_FILE_UPLOADED } from '../messages';
 import { Video } from '../models/Video';
+import { UploadResult } from '../types/UploadResult';
 import { VideoApi } from './../apis/VideoApi';
 
 export class VideoService {
@@ -44,5 +47,20 @@ export class VideoService {
       return null;
     }
     return result;
+  }
+
+  public async uploadVideo(createReadStream: any, fullPath: string, uploadResult: UploadResult): Promise<UploadResult> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        setTimeout(() => {
+          createReadStream()
+            .pipe(createWriteStream(fullPath))
+            .on('finish', () => resolve({ ...uploadResult, success: true, message: SUCCESS_FILE_UPLOADED }))
+            .on('error', () => reject({ ...uploadResult, message: ERR_FILE_UPLOADED }));
+        }, 2000);
+      } catch (err) {
+        console.error(err);
+      }
+    });
   }
 }
