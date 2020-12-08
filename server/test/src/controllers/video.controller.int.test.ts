@@ -24,25 +24,44 @@ describe('VideoController integration test', () => {
     app.use(controller.router);
   });
 
-  it.only('should get thumbnail png file for a video', async () => {
+  it('should play video', async () => {
 
+    const fullPath = path.join(__dirname, '../../../../test/assets/test.mp4');
     const id = 1;
-    const [video] = dummyVideos.filter(video => video.id === id);
+    let [video] = dummyVideos.filter(video => video.id === id);
+    video = { ...video, fullPath };
 
     videoApi.getVideoById = async id => {
       assert.strictEqual(id, 1, 'should be id');
       return video;
     };
 
-    console.log(path.join(__dirname, '../../../../test/fixtures/'));
+    const test = request(app)
+      .get(`/video/${id}/play`)
+      .expect(200)
+      .end(function (err: any, res: any) {
+        if (err) { throw err; }
+      });
+  });
 
-    // const test = request(app)
-    //   .get(`/video/${id}/poster`);
-    // console.log('test = ', test);
-    // test.expect(200, '/temp/test.png')
-    //   .end(function (err: any, res: any) {
-    //     if (err) { throw err; }
-    //   });
+  it('should get thumbnail png file for a video', async () => {
+
+    const fullPath = path.join(__dirname, '../../../../test/assets/test.mp4');
+    const id = 1;
+    let [video] = dummyVideos.filter(video => video.id === id);
+    video = { ...video, fullPath };
+
+    videoApi.getVideoById = async id => {
+      assert.strictEqual(id, 1, 'should be id');
+      return video;
+    };
+
+    const test = request(app)
+      .get(`/video/${id}/poster`)
+      .expect(200)
+      .end(function (err: any, res: any) {
+        if (err) { throw err; }
+      });
   });
 
 

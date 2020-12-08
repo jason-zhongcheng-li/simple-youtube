@@ -21,10 +21,20 @@ class VideoController implements Controller {
     this.router.get(`${this.path}/:id/poster`, this.getThumbnail);
   }
 
+
+  /**
+   * @param  {any} req
+   * @param  {any} res
+   * @param  {NextFunction} next
+   */
   private playVideo = async (req: any, res: any, next: NextFunction) => {
     await this.service.playVideo(req, res, next);
   }
 
+  /**
+   * @param  {any} req
+   * @param  {any} res
+   */
   private getThumbnail = async (req: any, res: any) => {
     await this.service.generateThumbnail(req, res);
   }
