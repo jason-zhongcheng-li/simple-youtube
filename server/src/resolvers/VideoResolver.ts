@@ -13,7 +13,13 @@ import { UploadResult } from '../types/UploadResult';
 export class VideoResolver {
 
   constructor(private service: VideoService) {
-    this.service = new VideoService(new VideoApi());
+    // I use inversify for IoC but have no time to setup in this demo project
+    if (service) {
+      // this approache is used for unit testing only
+      this.service = service;
+    } else {
+      this.service = new VideoService(new VideoApi());
+    }
   }
 
   @Query(() => String)
@@ -24,6 +30,7 @@ export class VideoResolver {
   @Query(() => [Video])
   public async videos(): Promise<Video[]> {
     const videos = await this.service.getAllVideos();
+
     /*
       ...
       presentation layer logic
