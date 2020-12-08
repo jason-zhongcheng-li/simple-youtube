@@ -53,6 +53,7 @@ export class VideoService {
     return new Promise(async (resolve, reject) => {
       try {
         setTimeout(() => {
+          // A readable stream to be piped into the destination
           createReadStream()
             .pipe(createWriteStream(fullPath))
             .on('finish', () => resolve({ ...uploadResult, success: true, message: SUCCESS_FILE_UPLOADED }))

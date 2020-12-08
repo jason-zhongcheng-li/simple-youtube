@@ -3,7 +3,7 @@ import { GraphQLUpload, FileUpload } from 'graphql-upload';
 
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
 import { VideoService } from './../services/VideoService';
-import { SUCCESS_FILE_UPLOADED, ERR_FILE_UPLOADED, ERR_FILE_NOT_FOUND, ERR_FILE_RECORD_SAVED } from '../messages';
+import { ERR_FILE_UPLOADED } from '../messages';
 import { VideoApi } from '../apis/VideoApi';
 import { Video } from '../models/Video';
 import { UploadResult } from '../types/UploadResult';
