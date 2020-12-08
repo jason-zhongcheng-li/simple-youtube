@@ -24,7 +24,7 @@ const VideoList = () => {
 
   return (
     <Fragment>
-      <VideoCards videos={data.videos} />
+      {data && <VideoCards videos={data.videos} />}
     </Fragment>
   )
 }

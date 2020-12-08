@@ -13,7 +13,7 @@ import { UploadResult } from '../types/UploadResult';
 export class VideoResolver {
 
   constructor(private service: VideoService) {
-    this.service = service;
+    this.service = new VideoService(new VideoApi());
   }
 
   @Query(() => String)
