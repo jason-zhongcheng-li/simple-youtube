@@ -3,9 +3,9 @@ import gql from 'graphql-tag';
 import { useDropzone } from 'react-dropzone';
 import { useMutation } from '@apollo/react-hooks';
 import { ToastContainer, toast } from 'react-toastify';
-import Loading from '../../../components/Loading';
 import 'react-toastify/dist/ReactToastify.css';
 import Typography from '@material-ui/core/Typography';
+import { Loading } from '../../../components';
 
 const UPLOAD_VIDEO = gql`
   mutation UploadVido($video: Upload!, $size: Float!, $timestamp: Float!) {

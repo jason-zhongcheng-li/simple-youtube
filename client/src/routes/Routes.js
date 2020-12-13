@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import VideoList from '../app/video/containers/video-list';
-import VideoPlayer from '../app/video/containers/video-player';
-import VideoUpload from '../app/video/containers/video-upload';
+import { VideoList, VideoPlayer, VideoUpload } from '../app/video/containers';
 import Header from '../components/Header';
 
 const Routes = () => {

@@ -1,13 +1,10 @@
-import { videoPath, videoStorage } from './../index';
+import { videoPath } from './../index';
 import { GraphQLUpload, FileUpload } from 'graphql-upload';
-
 import { Arg, Mutation, Query, Resolver } from 'type-graphql';
-import { VideoService } from './../services/VideoService';
-import { ERR_FILE_UPLOADED } from '../messages';
-import { VideoApi } from '../apis/VideoApi';
-import { Video } from '../models/Video';
-import { UploadResult } from '../types/UploadResult';
-
+import { VideoService } from '../services';
+import { VideoApi } from '../apis';
+import { Video } from '../models';
+import { UploadResult } from '../types';
 
 @Resolver()
 export class VideoResolver {
@@ -35,6 +32,7 @@ export class VideoResolver {
     */
     return videos;
   }
+
   /**
    * @param  {Video}  --> result type of grapql query
    * @param  {number} id --> variable in useQuery hook
@@ -49,7 +47,6 @@ export class VideoResolver {
     */
     return video;
   }
-
 
   /**
    * @param  {UploadResult} --> result type of grapql query

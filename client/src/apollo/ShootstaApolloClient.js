@@ -4,7 +4,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const link = createUploadLink({ uri: "http://localhost:4000/graphql" });
 
-const ShootstaClient = new ApolloClient({
+const ShootstaApolloClient = new ApolloClient({
   link,
   cache: new InMemoryCache(),
   defaultOptions: {
@@ -19,4 +19,4 @@ const ShootstaClient = new ApolloClient({
   }
 });
 
-export default ShootstaClient;
+export default ShootstaApolloClient;

@@ -1,16 +1,15 @@
 import { createWriteStream } from 'fs';
 import { basename } from 'path';
+import { VideoApi } from '../apis';
 import { ERR_FILE_UPLOADED, SUCCESS_FILE_UPLOADED } from '../messages';
-import { Video } from '../models/Video';
-import { UploadResult } from '../types/UploadResult';
-import { VideoApi } from './../apis/VideoApi';
+import { Video } from '../models';
+import { UploadResult } from '../types';
 
 export class VideoService {
 
   constructor(private videoApi: VideoApi) {
     this.videoApi = videoApi;
   }
-
 
   public async getAllVideos(): Promise<Video[]> {
     const videos = await this.videoApi.getVideos();
@@ -41,12 +40,9 @@ export class VideoService {
    * @param  {string} fullPath
    */
   public async saveVideo(timestamp: number, size: number, fullPath: string): Promise<Video | boolean> {
-
     const lastModifiedDate = new Date(timestamp);
     const sizeMB = (Math.round(size / 1024 / 1024 * 100) / 100).toString();
-
     const video: Video = { name: basename(fullPath, '.mp4'), size: sizeMB, lastModified: lastModifiedDate.toLocaleDateString(), fullPath };
-
     return await this.videoApi.saveVideo(video);
   }
 

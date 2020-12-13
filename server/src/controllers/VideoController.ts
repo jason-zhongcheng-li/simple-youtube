@@ -1,7 +1,7 @@
-import { PlayerService } from './../services/PlayerService';
 import { NextFunction, Router } from 'express';
+import { VideoApi } from '../apis';
+import { PlayerService } from '../services';
 import Controller from './Controller';
-import { VideoApi } from '../apis/VideoApi';
 
 
 class VideoController implements Controller {
@@ -21,7 +21,6 @@ class VideoController implements Controller {
     this.router.get(`${this.path}/:id/poster`, this.getThumbnail);
   }
 
-
   /**
    * @param  {any} req
    * @param  {any} res
@@ -38,7 +37,6 @@ class VideoController implements Controller {
   private getThumbnail = async (req: any, res: any) => {
     await this.service.generateThumbnail(req, res);
   }
-
 }
 
 export default VideoController;

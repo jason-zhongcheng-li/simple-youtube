@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import gql from 'graphql-tag';
-import VideoCards from '../components/VideoCards';
 import { useQuery } from '@apollo/react-hooks';
-import Loading from '../../../components/Loading';
+import { VideoCards } from '../components';
+import { Loading } from '../../../components';
 
 const GET_ALL_VIDEOS = gql`
   query {
@@ -14,7 +14,6 @@ const GET_ALL_VIDEOS = gql`
   }
 }
 `;
-
 
 const VideoList = () => {
 

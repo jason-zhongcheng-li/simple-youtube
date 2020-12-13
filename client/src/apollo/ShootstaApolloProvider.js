@@ -1,7 +1,7 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ShootstaClient from './ShootstaApolloClient';
-import Routes from '../routes/Routes';
+import { Routes } from '../routes';
 
 const ShootstaApolloProvider = () => {
   return (

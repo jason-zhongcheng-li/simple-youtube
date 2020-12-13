@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import { NextFunction } from 'express';
-import { VideoApi } from '../apis/VideoApi';
-
+import { VideoApi } from '../apis';
 const thumbsupply = require('thumbsupply');
 
 export class PlayerService {

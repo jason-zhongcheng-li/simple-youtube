@@ -1,7 +1,6 @@
 import React from "react";
 import VideoCard from "./VideoCard";
 
-
 const VideoCards = props => {
   const { videos } = props;
   return (
