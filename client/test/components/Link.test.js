@@ -1,14 +1,22 @@
-import { assertAbstractType } from 'graphql';
+import 'jsdom-global/register';
 import React from 'react';
 import * as assert from 'assert';
-import Link from '../../src/components';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import Routes from '../../src/routes/Routes';
+import Enzyme, { mount } from 'enzyme';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('Link component', () => {
-  it('works', () => {
-    assert.strictEqual(1 + 1, 2);
+
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<Routes />);
+
+  });
+
+  it('renders', () => {
+    console.log('wrapper = ', wrapper.debug());
+    assert.strictEqual(2, 2);
   });
 });
 
