@@ -4,4 +4,4 @@ import { PlayerService } from './PlayerService';
 export {
   VideoService,
   PlayerService
-}
+};
