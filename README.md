@@ -3,6 +3,11 @@
 ![code size](https://img.shields.io/github/languages/code-size/zhongchengli/simple-youtube)
 
 
+> Note: Please run this application in Node 12. Otherwise it will throw this exception:
+`RangeError: Maximum call stack size exceeded`.
+It seems a bug in Node 14.
+
+
 ## Description
 This is a small web stack. It is a simplifed Youtube applicatoin where you can upload, store/retrieve and watch video.
 
