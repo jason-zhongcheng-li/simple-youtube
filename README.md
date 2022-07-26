@@ -1,4 +1,4 @@
-# Shootsta Simplified Youtube - Developer Coding Challenge
+# Simplified Youtube - Developer Coding Challenge
 ![](https://img.shields.io/node/v/mocha)
 ![code size](https://img.shields.io/github/languages/code-size/zhongchengli/simple-youtube)
 
@@ -29,10 +29,10 @@ Front-end project is placed in *client* folder. It is developed with ReactJS and
 > Note: All records and files are saved in local file system. No database in use.
 
 ## Installation
-Use the package manager [npm](https://www.npmjs.com/) to install the dependencies in the backend/frontend project.
+Use the package manager [yarn](https://yarnpkg.com/) to install the dependencies in the backend/frontend project.
 
 ```bash
-npm install
+yarn
 ```
 
 ## Testing Backend --> Server
@@ -78,12 +78,3 @@ Once a browser poped up for you by starting up client project, you are free to g
 * Jason Li - [LinkedIn](https://www.linkedin.com/in/jason-li-5a943a135/)<br>
 *Java & Full stack JavaScript Developer*<br>
 Thanks for your time to review my code. I expect you are able to understand the design of the project and functions that I have implemented in this application.
-
-<br>
-As an candidate doing this code challenge, I have been enjoying hands-on coding, issue investigation, knowledge deep diving and problem solving in this project.
-<br>
-<br>
-I expect this project has exposed my tech stack and skill set to your development and recruitment teams in terms of my job application at Shootsta.
-
-
-
