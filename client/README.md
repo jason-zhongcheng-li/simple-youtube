@@ -1,4 +1,4 @@
-# Shootsta Simplifed Youtube Frontend
+# Simplifed Youtube Frontend
 
 # Getting Started with Create React App
 
