@@ -76,5 +76,4 @@ Once a browser poped up for you by starting up client project, you are free to g
 
 # Author
 * Jason Li - [LinkedIn](https://www.linkedin.com/in/jason-li-5a943a135/)<br>
-*Java & Full stack JavaScript Developer*<br>
-Thanks for your time to review my code. I expect you are able to understand the design of the project and functions that I have implemented in this application.
+* Full stack Developer (Typecript, ReactJS, Node, NextJS, Express, GraphQL) *
