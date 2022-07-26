@@ -75,5 +75,6 @@ Once a browser poped up for you by starting up client project, you are free to g
 > Note: All the uploaded video files are in the place of */server/dist/videos* folder where you can verify the feature of uploading video.
 
 # Author
-* Jason Li - [LinkedIn](https://www.linkedin.com/in/jason-li-5a943a135/)<br>
-* Full stack Developer (Typecript, ReactJS, Node, NextJS, Express, GraphQL) *
+
+* Jason Li - [LinkedIn](https://www.linkedin.com/in/jason-li-5a943a135/)
+* Full stack Developer (Typecript, ReactJS, Node, NextJS, Express, GraphQL)
